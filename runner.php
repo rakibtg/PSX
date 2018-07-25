@@ -2,6 +2,6 @@
 
   while ( true ) {
     system  ( 'clear'         );
-    system  ( 'php index.php' );
+    system  ( 'php build.php' );
     sleep   ( 2               );
   }
