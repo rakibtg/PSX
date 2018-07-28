@@ -2,6 +2,6 @@
 
   while ( true ) {
     system  ( 'clear'         );
-    system  ( 'php build.php' );
-    sleep   ( 2               );
+    system  ( 'php ./oreo/oreo-build.php' );
+    sleep   ( 1               );
   }

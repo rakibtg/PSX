@@ -3,26 +3,32 @@
 </foreach>
 
 <!-- ope = operator -->
-<if src="" opt="" cmp="" >
-  Yeah
+<if src="app.pinned_posts.count" is="lesser" to="Int(0)" >
+  <div>
+    We have some pinned posts!
+  </div>
 </if>
 
-<if src="" opt="" cmp="">
+<if src="app.user.permissions.edit_post" is="equal" to="Bool(true)">
   No good.
 </if>
 <else>
   Bluh...
 </else>
 
-<if src="" opt="" cmp="">
+<if src="app.something" is="greater" to="app.total_posts">
   Yo
 </if>
-<elseif src="" opt="" cmp="">
+<elseif src="app.something" is="greater/equal" to="String('Hello there')">
   Bru...
 </elseif>
-<elseif src="" opt="" cmp="">
+<elseif src="" is="" to="">
   Yada yada ...
 </elseif>
 <else>
   Nah, cant take it...
 </else>
+
+<story-author>
+  <print src="name"/>
+</story-author>
