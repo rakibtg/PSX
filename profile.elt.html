@@ -1,0 +1,35 @@
+<foreach src="$users as $key => $user">
+    <div class="user">
+      <print src="$user->name"/>
+    </div>
+  </foreach>
+  
+  <if src="$pinnedPosts">
+    <div>We have some pinned posts!</div>
+  </if>
+
+  <import src="sidebar" />
+  
+  <if src="$editPost === true">
+    No good.
+  </if>
+  <else>
+    Bluh...
+  </else>
+
+  <for src="$i = 0; $i >= 5; $i++">
+    <print src="$i"/>
+  </for>
+  
+  <if src="$app->usage > $limit">
+    Yo .. gotcha
+  </if>
+  <elseif src="$app->usage < $limit">
+    Bru...
+  </elseif>
+  <elseif src="$app->usage == null">
+    <span>Go home</span>
+  </elseif>
+  <else>
+    Nah, cant take it...
+  </else>
