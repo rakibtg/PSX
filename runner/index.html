@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+  <link rel="stylesheet" href="./app.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template Runner</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type='text/babel'>
+
+    class App extends React.Component {
+      constructor( props ) {
+        super( props )
+        this.state = {
+          code: 'hello world'
+        }
+      }
+      componentDidMount() {
+        setInterval( () => {
+          axios.get( '/build.php' )
+          .then( res => {
+            this.setState( {
+              code: res.data
+            } )
+          } )
+        }, 500 )
+      }
+      render() {
+        return <div className="code-wrapper">
+<pre>
+{ this.state.code }
+</pre>
+        </div>
+      }
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+  </script>
+</body>
+</html>
