@@ -75,7 +75,8 @@
   $dom = preg_replace_callback( $exp, 'safeImport', $dom );
 
   // closing tags
-  $exp = "/[<^]\s*?\/\s*?(.*)\s*?[>$]/Ui";
+  // $exp = "/[<^]\s*?\/\s*?(.*)\s*?[>$]/Ui";
+  $exp = $builder ->ClosingTags( '(if|elseif|for|foreach|else)' )->Make();
   $dom = preg_replace_callback( $exp, 'safeClosingTags', $dom );
 
   // file_put_contents( './output/build.php', $dom );
