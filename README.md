@@ -104,4 +104,14 @@ Will be converted to:
   <?php } ?>
 ```
 
+## file import
+```html
+  <import src="sidebar" />
+```
+Will be converted to:
+```php
+  <?php require_once "sidebar.elt.php"; ?>
+```
+
+
 Create an issue for any idea/feedback ...
