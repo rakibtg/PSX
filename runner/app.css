@@ -1,0 +1,10 @@
+html, body {
+  margin: 0px;
+}
+
+pre {
+  padding: 0px 10px;
+  font-family: 'Fira Code';
+  font-size: 12px;
+  line-height: 20px;
+}
