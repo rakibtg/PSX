@@ -7,6 +7,9 @@
     $token = trim( strtolower( $matches[ 1 ] ) );
     $code  = trim( $matches[ 2 ] );
 
+    // echo $token;
+    // exit();
+
     if      ( $token == 'foreach' ) $safeCode = 'foreach(' . $code .') {';
     else if ( $token == 'for'     ) $safeCode = 'for(' . $code .') {';
     else if ( $token == 'print'   ) $safeCode = 'echo ' . $code .';';
@@ -64,12 +67,16 @@
   $dom = preg_replace_callback( $exp, 'safePrint', $dom );
 
   // if
-  $exp = $builder ->Tags( '(if|elseif|for)', 'src' )->Make();
+  $exp = $builder ->Tags( '(if|elseif|for|foreach)', 'src' )->Make();
   $dom = preg_replace_callback( $exp, 'safeVar', $dom );
 
   // import
   $exp = $builder ->Tags( 'import', 'src', true )->Make();
   $dom = preg_replace_callback( $exp, 'safeImport', $dom );
+
+  // closing tags
+  $exp = "/[<^]\s*?\/\s*?(.*)\s*?[>$]/Ui";
+  $dom = preg_replace_callback( $exp, 'safeClosingTags', $dom );
 
   // file_put_contents( './output/build.php', $dom );
   echo $dom . "\n";
